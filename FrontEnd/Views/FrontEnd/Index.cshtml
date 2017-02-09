@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/FrontEndApp")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Merchants Data</title>
+</head>
+<body>
+    <div ng-app="FrontEndApp">
+        <div ng-controller="FrontEndController" ng-init="Initialize()">
+            <div class="row strong font-bold border">
+                <div class="col-md-2">Merchant Name</div>
+                <div class="col-md-2">Merchant Email</div>
+                <div class="col-md-2">Merchant Phone</div>
+                <div class="col-md-1">Merchant Status</div>
+                <div class="col-md-2">Merchant Address</div>
+                <div class="col-md-3">Merchant Logo</div>
+            </div>
+            <div class="row border" ng-repeat="data in merchantDetails">
+                <div class="col-md-2">{{data.display_name}}</div>
+                <div class="col-md-2">{{data.email}}</div>
+                <div class="col-md-2">{{data.phone}}</div>
+                <div class="col-md-1">{{data.status}}</div>
+                <div class="col-md-2">
+                    {{data.address.address1}},{{data.address.address2}}
+                    {{data.address.suburb}},{{data.address.state}}
+                    {{data.address.country}},{{data.address.postcode}}
+                </div>
+                <div class="col-md-3">
+                    <img ng-src="{{data.logo.path_to_file}}" />
+                </div>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>
+
